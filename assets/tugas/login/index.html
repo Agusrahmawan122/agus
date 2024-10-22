@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="user.png">
+	<title>Login</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: sans-serif;
+			background: #f8f9fa;
+		}
+		form {
+			width: 350px;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background: white;
+			padding: 15px 25px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 20px 10px lightgray
+		}
+		h1 {
+			padding: 15px 0px;
+			text-align: center;
+			border-bottom: 1px solid lightgray;
+		}
+		.input {
+			margin: 20px 0px;
+			display: flex;
+			align-items: center;
+			border: 2px solid lightgray;
+			border-radius: 5px;
+		}
+		.input img {
+			width: 12%;
+		}
+		.input input {
+			font-size: 1em;
+			outline-style: none;
+			border: none;
+			padding: 15px;
+			width: 85%;
+		}
+		#lost{
+			text-decoration: none;
+			color: dodgerblue;
+		}
+		#lost:hover {
+			color: blue;
+		}
+		button {
+			margin: 20px 0px 10px 0px;
+			padding: 10px;
+			width: 100%;
+			font-size: 1em;
+			border: 2px solid #0f6cbf;
+			background: #0f6cbf;
+			color: white;
+			border-radius: 5px;
+		}
+		button:hover {
+			background: white;
+			color: #0f6cbf;
+		}
+		#daftar {
+			display: block;
+			margin: 10px 0px 20px 0px;
+			padding: 10px;
+			text-decoration: none;
+			background: #0f6cbf;
+			color: white;
+			text-align: center;
+			border-radius: 5px;
+			border: 2px solid #0f6cbf;
+		}
+		#daftar:hover {
+			background: white;
+			color: #0f6cbf;
+		}
+	</style>
+</head>
+<body>
+	<form action="#" method="POST">
+		<h1>Login</h1>
+		<div class="input">
+			<img src="user.png">
+			<input type="text" name="username" placeholder="Username" required="">
+		</div>
+		<div class="input">
+			<img src="pass.png">
+			<input type="password" name="password" placeholder="Password" required="">
+		</div>
+		<a href="#lupa" id="lost">Lost Password?</a>
+		<button name="login">Login</button>
+		<center>Or</center>
+		<a href="#daftar" id="daftar">Sign Up</a>
+	</form>
+</body>
+</html>

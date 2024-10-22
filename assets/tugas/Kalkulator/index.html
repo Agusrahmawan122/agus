@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            color: white;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background: #D8D8D8;
+        }
+        .kotak {
+            width: 360px;
+            padding: 20px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 5px;
+        }
+        .angka {
+            margin: 20px 0px;
+            width: 360px;
+            display: flex;
+            justify-content: space-between;
+        }
+        input {
+            width: 300px;
+            height: 50px;
+            background: black;
+            outline-style: none;
+            border: none;
+            padding: 10px 30px;
+            font-size: 2em;
+            text-align: right;
+            border-radius: 5px;
+        }
+        button {
+            background: linear-gradient(180deg, #666666, #000000);
+            width: 20%;
+            height: 50px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.8em;
+            transition: font-size 0.1s;
+
+        }
+        button:hover {
+            font-size: 2.5em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="kotak">
+    <input type="text" id="display" readonly>
+    <div class="angka" style="margin-top: 40px;">
+        <button onclick="addToDisplay('+')">+</button>
+        <button onclick="addToDisplay('-')">-</button>
+        <button onclick="addToDisplay('*')">*</button>
+        <button onclick="addToDisplay('/')">/</button>
+    </div>
+    <div class="angka">
+        
+        <button onclick="addToDisplay('1')">1</button>
+        <button onclick="addToDisplay('2')">2</button>
+        <button onclick="addToDisplay('3')">3</button>
+        <button onclick="addToDisplay('4')">4</button>
+    </div>
+    <div class="angka">
+        <button onclick="addToDisplay('5')">5</button>
+        <button onclick="addToDisplay('6')">6</button>
+        <button onclick="addToDisplay('7')">7</button>
+        <button onclick="addToDisplay('8')">8</button>
+    </div>
+    <div class="angka">
+        <button onclick="addToDisplay('9')">9</button>
+        <button onclick="addToDisplay('0')">0</button>
+        <button onclick="addToDisplay('00')">00</button>
+        <button onclick="addToDisplay('.')">.</button>
+    </div>
+    <div class="angka">
+        <button onclick="clearDisplay()" style="width: 47%; background: linear-gradient(180deg, #FF9500, #834100);">C</button>
+        <button onclick="calculate()" style="width: 47%; background: linear-gradient(180deg, #00FF11, #006400);">=</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function addToDisplay(value) {
+        document.getElementById('display').value += value;
+    }
+
+    function calculate() {
+        let displayValue = document.getElementById('display').value;
+
+        if (displayValue === '' || /[+\-*/]$/.test(displayValue)) {
+            alert('Input tidak valid!');
+            clearDisplay();
+        } else {
+            try {
+                let result = eval(displayValue);
+                document.getElementById('display').value = result;
+            } catch (error) {
+                alert('Terjadi kesalahan pada kalkulasi!');
+                clearDisplay();
+            }
+        }
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+</script>
+
+</body>
+</html>

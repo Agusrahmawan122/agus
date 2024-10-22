@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dashboard</title>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			overflow-x: hidden;
+
+		}
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: sans-serif;
+			font-size: 1em;
+			background: whitesmoke;
+		}
+		.navbar {
+			position: fixed;
+			height: 100%;
+			width: 200px;
+			display: flex;
+			flex-direction: column;
+			background-color: #02071A;
+			margin-left: 0px;
+			transition: margin-left 1s;
+		}
+		.navbar h2 {
+			background-color: #050A1F;
+			align-items: center;
+			justify-content: center;
+			color: white;
+			border-right: 1px solid white;
+			padding: 10px;
+			height: 80px;
+			display: flex;
+		}
+		.navbar a {
+			font-size: 1em;
+			padding: 15px 20px;
+			color: white;
+			text-decoration: none;
+			background-color: #071652;
+			display: flex;
+			align-items: center;
+			transition: background-color 0.4s;
+		}
+		.navbar a:hover {
+			background-color: #152564;
+			border-right: 2px solid white;
+		}
+		.navbar img {
+			width: 30px;
+			margin-right: 20px;
+		}
+		.konten {
+			margin-left: 200px;
+			transition: margin-left 1s;
+		}
+		.atas {
+			padding: 5px 0px;
+			background-color: #050A1F;
+			height: 60px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		.kanan {
+			display: flex;
+			color: white;
+			align-items: center;
+			font-size: 1.5em;
+		}
+		.kanan button {
+			margin: 10px;
+			border: none;
+			background-color: transparent;
+			color: white;
+		}
+		.kanan button:hover {
+			background-color: #9d9d9d21;
+			border-radius: 50px;
+		}
+		.kanan img {
+			width: 30px;
+			padding: 10px;
+		}
+		.kanan p {
+			margin: 0px 5px;
+		}
+		.kanan a {
+			text-decoration: none;
+			color: white;
+			margin: 0px 10px;
+		}
+		.kanan a:hover {
+			color: blue;
+			text-decoration: underline;
+		}
+		.kiri {
+			display: flex;
+			color: white;
+			font-size: 1.2em;
+			font-weight: bold;
+			align-items: center;
+			padding: 0px 20px;
+		}
+		.kiri p {
+			padding: 0px 20px;
+		}
+		.kiri img {
+			border: 2px solid white;
+			width: 40px;
+			height: 40px;
+			border-radius: 50px;
+		}
+		.tengah {
+			padding: 0px 15px 15px 15px;
+		}
+		.tengah h1 {
+			padding: 15px 0px;
+			color: #050A1F;
+			font-size: 1.5em;
+		}
+		.view {
+			margin: 10px 0px;
+			background-color: white;
+			padding: 15px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px lightgrey;
+		}
+		.overview {
+			margin: 15px 0px;
+			background-color: white;
+			padding: 15px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px lightgrey;
+		}
+		.overview h2 {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.btn-tb {
+			padding: 10px;
+			border: 2px solid green;
+			border-radius: 5px;
+			background-color: green;
+			color: white;
+			font-weight: bold;
+			font-size: 0.7em;
+			cursor: pointer;
+		}
+		.btn-tb:hover {
+			background-color: white;
+			color: green;
+			border: 2px solid lightgreen;
+		}
+		.btn-ed {
+			padding: 10px;
+			border: 2px solid red;
+			border-radius: 5px;
+			background-color: red;
+			color: white;
+			font-weight: bold;
+			font-size: 0.7em;
+			cursor: pointer;
+		}
+		.btn-ed:hover {
+			background-color: white;
+			color: red;
+			border: 2px solid red;
+		}
+		.over {
+			display: flex;
+		}
+		.kotak {
+			display: flex;
+			align-items: center;
+			padding: 10px;
+			margin: 10px;
+			box-shadow: 0px 0px 10px lightgrey;
+			border-radius: 5px;
+		}
+		.kotak img {
+			width: 70px;
+			padding: 5px;
+		}
+		.text-over {
+			padding: 5px;
+			font-size: 1em;
+			font-weight: bold;
+		}
+
+		.posting {
+			top: 0%;
+			left: 0%;
+			position: fixed;
+			width: 100%;
+			height: 100vh;
+			background-color: #000000a6;
+		}
+		.posting form {
+			width: 400px;
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: white;
+			opacity: none;
+			padding: 15px;
+			border-radius: 5px;
+			display: flex;
+			flex-direction: column;
+		}
+		.posting h2 {
+			padding: 20px;
+			font-size: 2em;
+			text-align: center;
+			border-bottom: 3px solid green;
+			margin-bottom: 15px;
+		}
+		.posting label {
+			font-size: 1.2em;
+			padding: 10px 0px;
+		}
+		.posting input {
+			padding: 10px;
+			font-size: 1em;
+			background-color: whitesmoke;
+			border: none;
+			outline-style: none;
+			font-weight: bold;
+		}
+		.posting select {
+			padding: 10px;
+			font-size: 1em;
+			background-color: whitesmoke;
+			border: none;
+			outline-style: none;
+			font-weight: bold;
+		}
+		.btn-form {
+			display: flex;
+			justify-content: space-between;
+			padding: 10px 0px;
+		}
+		.btn-form button {
+			padding: 10px;
+			margin-top: 20px;
+			width: 45%;
+		}
+		.lanjut {
+			color: white;
+			background-color: green;
+			border: none;
+			border-radius: 5px;
+			font-size: 1em;
+			font-weight: bold;
+		}
+		.batal {
+			color: white;
+			background-color: red;
+			border: none;
+			border-radius: 5px;
+			font-size: 1em;
+			font-weight: bold;
+		}
+		@media only screen and (max-width: 780px) {
+			* {
+				overflow-x: clip;
+			}
+			.kiri {
+				padding: 10px;
+			}
+			.kiri p {
+				padding: 10px;
+			}
+			.kanan button, p {
+				margin: 0px;
+			}
+			.over {
+				flex-wrap: wrap;
+			}
+			.kotak {
+				width: 100%;
+				justify-content: space-evenly;
+			}
+			.text-over {
+				width: 50%;
+			}
+			.overview h2 {
+				flex-wrap: wrap;
+			}
+			.btn-tb {
+				padding: 5px;
+			}
+			.btn-ed {
+				padding: 5px;
+			}
+			#myChart {
+				 width: 100%; 
+				 height: 60px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="navbar" id="navbar">
+		<h2>Blogku</h2>
+		<a href="#" style="background-color: #152564; border-right: 2px solid white;"><img src="asset/img/das.png">Dasboard</a>
+		<a href="#"><img src="asset/img/post.png">Post Blog</a>
+		<a href="#"><img src="asset/img/member.png">Members</a>
+		<a href="#"><img src="asset/img/komen.png">comment</a>
+		<a href="#"><img src="asset/img/mesage.png">Message</a>
+		<a href="#"><img src="asset/img/forum.png">Forum</a>
+		<a href="#"><img src="asset/img/out.png">Logout</a>
+	</div>
+	<div class="konten" id="konten">
+
+		<div class="atas">
+			<div class="kanan">
+				<button id="menu" onclick="nav()"><img src="asset/img/menu.png"></button>
+				<p>> <a href="#">Dashboard</a></p>
+			</div>
+			<div class="kiri">
+				<p>Agus Rahmawan</p>
+				<img src="asset/img/profil.jpeg">
+			</div>
+		</div>
+
+		<div class="tengah">
+
+			<div class="overview">
+				<h2>
+					Overview 
+					<div class="btn-tb-ed">
+						<button class="btn-tb" onclick="post()">Posting Blog</button>
+						<button class="btn-ed" onclick="edit()">Edit Blog</button>
+					</div>
+				</h2>
+				<div class="over">
+					<div class="kotak" style="border-left: 5px solid green;">
+						<img src="asset/img/visit.png">
+						<div class="text-over">
+							<p style="font-size: 1.5em;">23</p>
+							<p>Daily Visit</p>
+						</div>
+					</div>
+					<div class="kotak" style="border-left: 5px solid skyblue;">
+						<img src="asset/img/komen2.png">
+						<div class="text-over">
+							<p style="font-size: 1.5em;">23</p>
+							<p>Daily Comments</p>
+						</div>
+					</div>
+					<div class="kotak" style="border-left: 5px solid yellow;">
+						<img src="asset/img/post2.png">
+						<div class="text-over">
+							<p style="font-size: 1.5em;">23</p>
+							<p>Daily Post</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="posting" id="posting" style="display: none;">
+				<form action="#">
+					<h2>Posting Blog</h2>
+					<label for="judul">Judul Blog :</label>
+					<input type="text" id="judul">
+					<label for="penulis">Penulis :</label>
+					<input type="text" id="penulis">
+					<label for="komen">Komentar :</label>
+					<select id="komen">
+						<option selected>Pilih</option>
+						<option>Izinkan</option>
+						<option>Jangan Izinkan</option>
+					</select>
+					<label for="tanggal">Tanggal :</label>
+					<input type="date" id="tanggal" style="font-size: 1.3em">
+					<div class="btn-form">
+						<button onclick="lanjut()" class="lanjut">Lanjut</button>
+						<button onclick="closepos()" class="batal">Batal</button>
+					</div>
+				</form>
+			</div>
+
+			<div class="posting" id="edit" style="display: none;">
+				<form action="#">
+					<h2>Posting Blog</h2>
+					<label for="blog">Pilih Blog :</label>
+					<select id="blog">
+						<option selected>Pilih</option>
+						<option>Blog 1</option>
+						<option>Blog 2</option>
+						<option>Blog 3</option>
+						<option>Blog 4</option>
+						<option>Blog 5</option>
+					</select>
+					<label for="alasan">Alasan :</label>
+					<textarea id="alasan" style="width: 380px; height: 100px; resize: none; padding: 10px; font-size: 1.5em; outline-style: none; border-radius: 5px;"></textarea>
+					<div class="btn-form">
+						<button onclick="lanjut()" class="lanjut">Lanjut</button>
+						<button onclick="closedit()" class="batal">Batal</button>
+					</div>
+				</form>
+			</div>
+
+			<div class="view">
+				<h1>Grafik Pengunjung, Komentar, dan Postingan per Bulan</h1>
+				<canvas id="myChart" width="100vh" height="50vh"></canvas>
+			</div>
+
+		</div>
+
+		<div class="bawah">
+
+		</div>
+	</div>
+</body>
+
+<script>
+
+function post() {
+	var posting = document.getElementById('posting');
+	
+	if (posting.style.display === 'none') {
+		posting.style.display = 'block'; 
+	} else {
+		posting.style.display = 'none';
+	}
+}
+
+function edit() {
+	var edit = document.getElementById('edit');
+	
+	if (edit.style.display === 'none') {
+		edit.style.display = 'block'; 
+	} else {
+		edit.style.display = 'none';
+	}
+}
+
+function closepos() {
+	var posting = document.getElementById('posting');
+	
+	if (posting.style.display === 'block') {
+		posting.style.display = 'none'; 
+	} else {
+		posting.style.display = 'block';
+	}
+}
+
+function closedit() {
+	var edit = document.getElementById('edit');
+	
+	if (edit.style.display === 'block') {
+		edit.style.display = 'none'; 
+	} else {
+		edit.style.display = 'block';
+	}
+}
+
+function nav() {
+  var navbar = document.getElementById('navbar');
+  
+  if (navbar.style.marginLeft === '-200px') {
+    navbar.style.marginLeft = '0';
+  } else {
+    navbar.style.marginLeft = '-200px';
+  }
+  var konten = document.getElementById('konten');
+  
+  if (konten.style.marginLeft === '0px') {
+    konten.style.marginLeft = '200px';
+  } else {
+    konten.style.marginLeft = '0px'; 
+  }
+}
+
+const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Januari', 'Febuari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+                datasets: [
+                    {
+                        label: 'Pengunjung',
+                        data: [120, 110, 135, 150, 128, 136, 120, 110, 135, 150, 112, 115],
+                        backgroundColor: 'green',
+                        borderColor: 'green',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Komentar',
+                        data: [35, 30, 40, 45, 50, 55, 30, 30, 40, 40, 50, 50],
+                        backgroundColor: 'blue',
+                        borderColor: 'blue',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Postingan',
+                        data: [20, 18, 25, 22, 30, 35, 20, 18, 25, 22, 30, 35],
+                        backgroundColor: 'yellow',
+                        borderColor: 'yellow',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+</script>
+</html>
