@@ -270,6 +270,84 @@
 			font-size: 1em;
 			font-weight: bold;
 		}
+
+		.bawah {
+			margin-bottom: 10px;
+			padding: 0px 15px;
+			border-radius: 5px;
+			display: flex;
+			justify-content: space-between;
+		}
+		.blog {	
+			padding: 15px;
+			width: 30%;
+			background-color: white;
+			box-shadow: 0px 0px 10px lightgrey;
+		}
+		.blog h2 {
+			padding: 10px 0px;
+			border-bottom: 2px solid lightgrey;
+			font-size: 1.2em;
+		}
+		.blog img {
+			width: 100px;
+		}
+		.kotak-blog {
+			margin: 10px 0px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			border-bottom: 1px solid lightgrey;
+			padding: 10px 0px;
+		}
+		.text-blog {
+			width: 75%;
+		}
+		.text-blog h3 {
+			border-bottom: 1px solid black;
+			margin-bottom: 5px;
+			font-size: 1em;
+		}
+		.text-blog a {
+			text-decoration: none;
+			text-decoration: underline;
+			color: blue;
+			margin: 5px 0px;
+		}
+		.text-blog p {
+			padding: 0px 10px;
+			font-size: 0.9em;
+		}
+		.overflow {
+			height: 500px;
+			overflow-y: auto;
+		}
+
+		.kotak-komen {
+			margin: 10px 0px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			border-bottom: 1px solid lightgrey;
+			padding: 10px 0px;
+		}
+		.kotak-komen img {
+			width: 60px;
+			height: 60px;
+			border-radius: 50px;
+		}
+		.text-komen {
+			width: 80%;
+			padding: 0px 10px;
+		}
+		.text-komen p {
+			padding: 0px 10px;
+			font-size: 0.9em;
+		}
+		.text-komen h3 {
+			padding: 0px 10px;
+			font-size: 1em;
+		}
 		@media only screen and (max-width: 780px) {
 			* {
 				overflow-x: clip;
@@ -306,13 +384,20 @@
 				 width: 100%; 
 				 height: 60px;
 			}
+			.bawah {
+				flex-wrap: wrap;
+			}
+			.blog {
+				width: 100%;
+				margin: 10px 0px;
+			}
 		}
 	</style>
 </head>
 <body>
 	<div class="navbar" id="navbar">
 		<h2>Blogku</h2>
-		<a href="#" style="background-color: #152564; border-right: 2px solid white;"><img src="asset/img/das.png">Dasboard</a>
+		<a href="#" style="background-color: #152564; border-right: 2px solid white;"><img src="asset/img/das.png">Dashboard</a>
 		<a href="#"><img src="asset/img/post.png">Post Blog</a>
 		<a href="#"><img src="asset/img/member.png">Members</a>
 		<a href="#"><img src="asset/img/komen.png">comment</a>
@@ -392,7 +477,7 @@
 
 			<div class="posting" id="edit" style="display: none;">
 				<form action="#">
-					<h2>Posting Blog</h2>
+					<h2>Edit Blog</h2>
 					<label for="blog">Pilih Blog :</label>
 					<select id="blog">
 						<option selected>Pilih</option>
@@ -420,6 +505,121 @@
 
 		<div class="bawah">
 
+			<!-- Bagian Postingan -->
+
+			<div class="blog">
+				<h2>Postingan Terbaru</h2>
+				<div class="overflow">
+					<div class="kotak-blog">
+						<img src="asset/img/blog1.jpg">
+						<div class="text-blog">
+							<h3>Teknik Komputer</h3>
+							<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique finibus id magna lacinia venenatis turpis dictum...<br><a href="#edit">Edit</a></p>
+							<p style="text-align: right; font-style: italic;">Tanggal : 12/10/2024</p>
+						</div>
+					</div>
+					<div class="kotak-blog">
+						<img src="asset/img/blog1.jpg">
+						<div class="text-blog">
+							<h3>Teknik Komputer</h3>
+							<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique finibus id magna lacinia venenatis turpis dictum...<br><a href="#edit">Edit</a></p>
+							<p style="text-align: right; font-style: italic;">Tanggal : 12/10/2024</p>
+						</div>
+					</div>
+					<div class="kotak-blog">
+						<img src="asset/img/blog1.jpg">
+						<div class="text-blog">
+							<h3>Teknik Komputer</h3>
+							<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique finibus id magna lacinia venenatis turpis dictum...<br><a href="#edit">Edit</a></p>
+							<p style="text-align: right; font-style: italic;">Tanggal : 12/10/2024</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Bagian Komentar -->
+
+			<div class="blog">
+				<h2>Komentar Terbaru</h2>
+				<div class="overflow">
+					<div class="kotak-komen">
+						<img src="asset/img/blog1.jpg">
+						<div class="text-komen">
+							<h3>user1</h3>
+							<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique finibus id magna.<br><a href="#edit" style="display: block; text-align: right; color: blue;">Balas</a></p>
+						</div>
+					</div>
+					<div class="kotak-komen">
+						<img src="asset/img/blog1.jpg">
+						<div class="text-komen">
+							<h3>user2</h3>
+							<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique finibus id magna.<br><a href="#edit" style="display: block; text-align: right; color: blue;">Balas</a></p>
+						</div>
+					</div>
+					<div class="kotak-komen">
+						<img src="asset/img/blog1.jpg">
+						<div class="text-komen">
+							<h3>user3</h3>
+							<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique finibus id magna.<br><a href="#edit" style="display: block; text-align: right; color: blue;">Balas</a></p>
+						</div>
+					</div>
+					<div class="kotak-komen">
+						<img src="asset/img/blog1.jpg">
+						<div class="text-komen">
+							<h3>user4</h3>
+							<p>Lorem ipsum odor amet, consectetuer adipiscing elit. Tristique finibus id magna.<br><a href="#edit" style="display: block; text-align: right; color: blue;">Balas</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Pengunjung Baru -->
+
+			<div class="blog">
+				<h2>Pengunjung Baru</h2>
+				<div class="overflow">
+					<div class="kotak-komen">
+						<img src="asset/img/blog1.jpg">
+						<div class="text-komen">
+							<h3>user1</h3>
+							<p>Kunjungan : 20 Kunjungan<br>
+								Komentar : 5 Komentar<a href="#edit" style="display: block; text-align: right; color: blue;">Lihat</a></p>
+						</div>
+					</div>
+					<div class="kotak-komen">
+						<img src="asset/img/blog1.jpg">
+						<div class="text-komen">
+							<h3>user2</h3>
+							<p>Kunjungan : 20 Kunjungan<br>
+								Komentar : 5 Komentar<a href="#edit" style="display: block; text-align: right; color: blue;">Lihat</a></p>
+						</div>
+					</div>
+					<div class="kotak-komen">
+						<img src="asset/img/blog1.jpg">
+						<div class="text-komen">
+							<h3>user3</h3>
+							<p>Kunjungan : 20 Kunjungan<br>
+								Komentar : 5 Komentar<a href="#edit" style="display: block; text-align: right; color: blue;">Lihat</a></p>
+						</div>
+					</div>
+					<div class="kotak-komen">
+						<img src="asset/img/blog1.jpg">
+						<div class="text-komen">
+							<h3>user4</h3>
+							<p>Kunjungan : 20 Kunjungan<br>
+								Komentar : 5 Komentar<a href="#edit" style="display: block; text-align: right; color: blue;">Lihat</a></p>
+						</div>
+					</div>
+					<div class="kotak-komen">
+						<img src="asset/img/blog1.jpg">
+						<div class="text-komen">
+							<h3>user5</h3>
+							<p>Kunjungan : 20 Kunjungan<br>
+								Komentar : 5 Komentar<a href="#edit" style="display: block; text-align: right; color: blue;">Lihat</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
